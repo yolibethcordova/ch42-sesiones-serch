@@ -120,6 +120,11 @@ console.log( typeof myName ); // "undefined"
  */
  const isActive = true;
  
+ // --------------------------------------------------------------
+ /*
+   Conversion explícita de datos (coerción de tipo)
+
+ */
 // Conversión a String
 const edadMascota = 10; // number
 // Conversion implícita
@@ -127,17 +132,26 @@ console.log("Edad de mi mascota " + edadMascota); // "Edad de mi mascota: 10"
 // Conversión explícita
 const edadMascotaString = String( edadMascota ); // "10"
                                                // "Edad de mi mascota en String 10"
-console.log("Edad de mi mascota en String " + edadMascotaString );
+console.log("Edad de mi mascota en String " + edadMascotaString ); 
+
+// Conversión a number
+const costo = "100";
+// Conversión implícita
+const costoConIVA = costo * 1.16; // 116.00
 
 // Conversión explícita
-const precioCroquetas = "1000.50";
-const precioJabon = "25";
-const precioPapel = "40";
-const total = precioCroquetas + precioJabon + precioPapel; // 1000.502540
-const totalCorrecto = parseFloat( precioCroquetas ) + parseInt( precioJabon ) 
+const precioCroquetas = "1000.50"; // string
+const precioJabon = "25"; // string
+const precioPapel = "40"; // string
+const precioPapelNumber = parseInt(precioPapel); // 40 (number)
+console.log( typeof (precioPapel ), typeof(precioPapelNumber) ); // string, number
+
+const total = precioCroquetas + precioJabon + precioPapel; // 1000.502540 (string)
+
+const totalCorrecto = parseFloat( precioCroquetas ) + parseInt( precioJabon )  //(number)
                       + Number(precioPapel);
 
- *
+/*
  Number() Vs parseInt()
   - Number convierte enteros y decimales
   - parseInt convierte solo pa larte entera
@@ -150,3 +164,60 @@ console.log( Number("10.456")); // 10.456
 //   no numérico
 // - con parseInt y parseFloat, si la entrada comienza con un valor no numérico
 //   devuelve NaN
+console.log( parseInt("10-25")); // 10
+console.log( Number("10-25")); // NaN
+
+// Para convertir un tipo boolean a number se debe utilizar Number()
+console.log( Number( true )); // 1
+console.log( Number( false )); // 0
+console.log( parseInt( true )); // NaN
+
+// Conversión a tipo boolean
+// En la conversión a boolean los siguientes valores son false:
+// ""(empty string), 0, null, undefined
+console.log( Boolean(1) ); // true 
+console.log( Boolean(1000) ); // true 
+console.log( Boolean(-1000) ); // true
+console.log( Boolean("Ya mero terminamos, me duele la cabeza") ); // true
+console.log( Boolean("") ); // false
+console.log( Boolean(" ") ); // true
+console.log( Boolean("0")); // true
+console.log( Boolean( Number("0")) ); // false
+          // Boolean( 0 );
+
+          // Resumen:
+// Number()
+// [] (empty array) -> 0, [30]-> 30, [30,30]->NaN, false-> 0, true-> 1
+// String()
+// [] -> "", [12,2]->"12,2", function(){}-> "function(){}"
+// {} ->"[object,object]", {clave:valor, age:17} ->"[object,object]"
+// Para convertir un obejeto a string, la forma correcta es usar
+// el método JSON.stringyfy( objeto );
+
+console.log( 2< 10 ); // true
+console.log( "22" < 10 ); // true
+         // 22 < 10
+
+
+// Cuando los dos operandos sean string, se evalua cada caracter
+// por su posición en la tabla unicode. Se compara el primer caracter del op1
+// con el primer caracter del op2, si son iguales se continua con el segundo operando        
+console.log(  "22" > "3"  );// false
+        //     50  >  51
+
+console.log(  "221" >  "24" );//false
+        //     50("2") > 52("4")
+ 
+ console.log( "Mar" > "Dulde" ); //true       
+         //    77   >   68
+  console.log( "Mar" > "Maricela" ); //false
+  
+  console.log( "marbe" > "Maricela" ); //true
+        //      m > M
+
+console.log ( "marbe".toLowerCase() > "Maricela".toLocaleLowerCase())
+        //     b > i    false 
+        //     98 > 105  false
+console.log( "Mar" > "Diana" > 50 ); // false
+        //     77      68
+        //     1       50
