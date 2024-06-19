@@ -117,3 +117,44 @@ const calcularImpuesto = (valor, tasaImpuesto) => valor * tasaImpuesto;
 const valor = 70.50;
 const tasaImpuesto = 0.16;
 console.log(`El impuesto de los calcetines es: ${calcularImpuesto(valor, tasaImpuesto)}`);
+
+// =============================================================
+/*
+ ------------ Funciones de Callback -----------------------
+ Es una función(definida, expresada, arrow, anónima) que se pasa 
+ a otra función como argumento.
+ Se pasa en el argumento como referencia ( sin parentesis).
+ */
+ // Hacer con arrow function una función que reciba un texto e imprima en consola
+ 
+ // Hacer con arrow function una función que reciba un texto e imprima en alert
+ const imprimirEnConsola = (texto) => {
+    console.log(texto);
+    };
+    
+    
+    imprimirEnConsola("Este es un texto para la consola");
+    
+    const imprimirEnAlert = (texto) => {
+    alert(texto);
+    };
+
+
+ // Realizar una función(arrow function) que reciba un texto
+// y que pueda imprimir en consola, alert y quiza en el futuro
+// se agregue otra salida para imprimir.
+
+const prinMessage = (tex, optionToprin ) => {
+    if( optionToprin === "console"){
+        printToConsole(tex);
+    } else if( optionToprin === "aler"){
+        printToAler(tex);
+    } else {
+        console.error("Que transa!, te equivocaste de opción"); 
+}
+    }
+    // Imprimir en la consola
+    console.log(texto);
+  
+    
+    
